@@ -5,196 +5,819 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#073b32">
+<meta name="description" content="Ensiklopedia Digital Aceh">
 <title>Ensiklopedia Digital Aceh</title>
+
 <style>
-:root{--hijau:#073b32;--hijau2:#0d5a49;--emas:#e5b95c;--krem:#f7f4eb;--putih:#fffefa;--teks:#17251f;--abu:#65736b}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--krem);color:var(--teks);line-height:1.7}
-a{text-decoration:none;color:inherit}
-header{background:var(--hijau);color:white;border-top:5px solid var(--emas)}
-nav{max-width:1100px;margin:auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:20px;font-weight:bold}
-.logo span{color:var(--emas)}
-nav a{margin-left:15px;font-size:14px}
-.hero{background:linear-gradient(135deg,#073b32,#0d5a49);color:white;padding:65px 22px}
-.hero-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
-.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.15;margin:12px 0}
-.hero h1 span{color:var(--emas)}
-.hero p{max-width:650px;color:#d8e6df;font-size:17px}
-.kicker{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--emas);font-weight:bold}
-.seal{font-size:100px;color:var(--emas);border:2px solid #b9994e;border-radius:50%;width:210px;height:210px;display:grid;place-items:center;flex-shrink:0}
-.btn{display:inline-block;background:var(--emas);color:#18251f;padding:12px 18px;border-radius:9px;font-weight:bold;margin-top:12px}
-.stats{background:var(--putih);display:flex;justify-content:center;gap:45px;padding:22px;flex-wrap:wrap;border-bottom:1px solid #e8e3d7}
-.stats strong{color:var(--hijau)}
-main{max-width:1100px;margin:auto;padding:55px 22px}
-h2{font-size:clamp(26px,4vw,35px);line-height:1.25;margin:8px 0}
-.desc{color:var(--abu);margin-top:8px}
-.search{display:flex;gap:8px;margin:24px 0 16px}
-.search input{flex:1;min-width:0;padding:13px;border:1px solid #d6d4c9;border-radius:9px;font-size:16px}
-.search button{background:var(--hijau);color:white;border:0;border-radius:9px;padding:0 18px;font-weight:bold}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
-.filters button{border:1px solid #d7d4c8;background:transparent;border-radius:30px;padding:8px 14px;cursor:pointer}
-.filters button.active,.filters button:hover{background:var(--hijau);color:white}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.card{background:var(--putih);border:1px solid #e8e3d7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #073b3215}
-.art{height:140px;display:grid;place-items:center;font-size:55px;background:linear-gradient(135deg,#d9e8dd,#f3e4ba)}
-.content{padding:18px;display:flex;flex-direction:column;flex:1}
-.tag{font-size:11px;color:var(--hijau2);font-weight:bold;text-transform:uppercase;letter-spacing:1px}
-.card h3{margin:8px 0;font-size:19px;line-height:1.35}
-.card p{color:var(--abu);font-size:14px;margin:0 0 15px}
-.read{border:0;background:none;color:var(--hijau2);font-weight:bold;text-align:left;padding:0;cursor:pointer;margin-top:auto;font-size:14px}
-.empty{grid-column:1/-1;text-align:center;padding:25px;color:var(--abu)}
-.quote{background:#e8eee5;padding:28px;border-radius:14px;margin-top:45px;color:#254237;font-size:18px;font-weight:bold}
-.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:30px;align-items:center;margin-top:60px}
-.about-icon{background:var(--hijau);color:var(--emas);border-radius:15px;min-height:190px;display:grid;place-items:center;font-size:80px}
-.about p{color:var(--abu)}
-footer{background:#052b25;color:#dce8df;padding:27px 22px;text-align:center;font-size:13px}
-footer strong{color:var(--emas)}
-.modal-bg{display:none;position:fixed;inset:0;background:#001c17c9;z-index:10;padding:18px;overflow:auto;align-items:center;justify-content:center}
-.modal-bg.show{display:flex}
-.modal{background:var(--putih);padding:28px;border-radius:15px;width:100%;max-width:650px;position:relative}
-.modal h2{padding-right:35px}
-.modal p{white-space:pre-line;color:#4d5e55}
-.close{position:absolute;right:12px;top:10px;border:0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}
-@media(max-width:750px){
- nav{padding:15px;flex-wrap:wrap}.logo{font-size:17px}nav a{margin-left:9px;font-size:12px}
- .hero{padding:45px 18px}.hero-inner{display:block}.seal{width:125px;height:125px;font-size:62px;margin:30px auto 0}
- .stats{gap:12px;font-size:12px}.stats div{text-align:center}
- main{padding:42px 15px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
- .art{height:105px;font-size:43px}.content{padding:13px}.card h3{font-size:16px}.card p{font-size:12px}
- .about{grid-template-columns:1fr}.about-icon{min-height:130px}
+:root {
+  --green:#073b32;
+  --green-2:#0d5a49;
+  --gold:#e5b95c;
+  --cream:#f7f4eb;
+  --ink:#17251f;
+  --muted:#65736b;
+  --white:#fffefa;
+  --line:#e8e3d7;
+  --shadow:0 14px 35px rgba(7,59,50,.09);
 }
-@media(max-width:380px){.cards{grid-template-columns:1fr}.art{height:125px}}
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+}
+
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+
+.topline {
+  height:5px;
+  background:linear-gradient(90deg,var(--gold),#f3d994,var(--gold));
+}
+
+header { background:var(--green); color:white; }
+
+.nav {
+  max-width:1120px;
+  margin:auto;
+  padding:17px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+}
+
+.brand { display:flex; align-items:center; gap:12px; min-width:0; }
+
+.brand-mark {
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(229,185,92,.8);
+  border-radius:14px;
+  color:var(--gold);
+  font-size:24px;
+  flex-shrink:0;
+}
+
+.brand-name { font-weight:800; line-height:1.15; }
+.brand-sub {
+  font-size:11px;
+  color:#c8d8d0;
+  margin-top:4px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:22px;
+  font-size:14px;
+  color:#e7eee9;
+}
+
+.nav-links a:hover { color:var(--gold); }
+
+.hero {
+  background:
+    radial-gradient(ellipse at 80% 20%,rgba(229,185,92,.17),transparent 35%),
+    linear-gradient(135deg,#073b32,#0a4b3c 70%,#092e29);
+  color:white;
+  overflow:hidden;
+}
+
+.hero-inner {
+  max-width:1120px;
+  margin:auto;
+  padding:76px 22px 82px;
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:40px;
+  align-items:center;
+}
+
+.eyebrow {
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2.4px;
+  font-size:12px;
+  font-weight:800;
+}
+
+h1 {
+  font-size:clamp(36px,5vw,58px);
+  line-height:1.08;
+  margin:15px 0 20px;
+  letter-spacing:-1.8px;
+}
+
+h1 span { color:var(--gold); }
+
+.hero p {
+  max-width:620px;
+  color:#d6e4dc;
+  font-size:17px;
+  margin:0 0 28px;
+}
+
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+
+.btn {
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-weight:750;
+  cursor:pointer;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  transition:transform .18s,background .18s;
+}
+
+.btn:hover { transform:translateY(-2px); }
+.btn-gold { background:var(--gold); color:#1c2a20; }
+
+.btn-outline {
+  border:1px solid rgba(255,255,255,.35);
+  color:white;
+  background:transparent;
+}
+
+.hero-art { min-height:260px; display:grid; place-items:center; }
+
+.seal {
+  width:min(270px,75vw);
+  aspect-ratio:1;
+  border:1px solid rgba(229,185,92,.55);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  position:relative;
+  background:rgba(255,255,255,.035);
+}
+
+.seal:before,.seal:after {
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px dashed rgba(229,185,92,.42);
+  border-radius:50%;
+}
+
+.seal:after { inset:34px; border-style:solid; }
+.seal-inner { text-align:center; z-index:1; padding:20px; }
+.seal-symbol { font-size:76px; line-height:1.2; color:var(--gold); }
+.seal-title { font-size:12px; letter-spacing:3px; font-weight:800; color:#f3e4b9; }
+.seal-small { color:#b7cec3; font-size:11px; margin-top:8px; }
+
+.stats-wrap { background:var(--white); border-bottom:1px solid var(--line); }
+
+.stats {
+  max-width:1120px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  padding:23px 22px;
+  gap:15px;
+}
+
+.stat {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  text-align:left;
+}
+
+.stat-icon { font-size:24px; }
+.stat strong { display:block; font-size:14px; }
+.stat span { display:block; font-size:12px; color:var(--muted); }
+
+main { max-width:1120px; margin:auto; padding:64px 22px 72px; }
+
+.section-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:18px;
+  margin-bottom:24px;
+}
+
+.section-kicker {
+  color:var(--green-2);
+  text-transform:uppercase;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:2px;
+}
+
+h2 {
+  margin:6px 0 0;
+  font-size:clamp(26px,3vw,34px);
+  letter-spacing:-.7px;
+  line-height:1.2;
+}
+
+.section-desc { color:var(--muted); margin:10px 0 0; max-width:600px; }
+
+.searchbox {
+  display:flex;
+  gap:9px;
+  max-width:440px;
+  width:100%;
+  margin:0 0 18px;
+}
+
+.searchbox input {
+  width:100%;
+  min-width:0;
+  border:1px solid #d9d5c9;
+  border-radius:10px;
+  background:var(--white);
+  padding:13px 14px;
+  outline:none;
+}
+
+.searchbox input:focus {
+  border-color:var(--green-2);
+  box-shadow:0 0 0 3px rgba(13,90,73,.1);
+}
+
+.searchbox button {
+  background:var(--green);
+  color:white;
+  border:0;
+  border-radius:10px;
+  padding:0 17px;
+  cursor:pointer;
+}
+
+.filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px; }
+
+.filter {
+  border:1px solid #ddd8ca;
+  color:#43544a;
+  border-radius:999px;
+  padding:8px 14px;
+  background:transparent;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.filter.active,.filter:hover {
+  background:var(--green);
+  color:white;
+  border-color:var(--green);
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.card {
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 3px 12px rgba(7,59,50,.025);
+  transition:transform .2s,box-shadow .2s;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+
+.card-art {
+  height:190px;
+  position:relative;
+  overflow:hidden;
+  background:#dfe7df;
+}
+
+.card-art img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .35s ease;
+}
+
+.card:hover .card-art img { transform:scale(1.05); }
+
+.card-art:after {
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:38%;
+  background:linear-gradient(transparent,rgba(7,30,24,.18));
+  pointer-events:none;
+}
+
+.image-fallback {
+  height:100%;
+  display:grid;
+  place-items:center;
+  color:#65736b;
+  font-size:13px;
+  background:linear-gradient(135deg,#e6eadb,#f4e4b9);
+}
+
+.card-content {
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.tag {
+  align-self:flex-start;
+  font-size:10px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  font-weight:850;
+  color:var(--green-2);
+  background:#e8f0e9;
+  border-radius:5px;
+  padding:4px 8px;
+}
+
+.card h3 { font-size:19px; line-height:1.3; margin:12px 0 8px; }
+.card p { font-size:13px; color:var(--muted); margin:0 0 18px; }
+
+.read-more {
+  margin-top:auto;
+  color:var(--green-2);
+  font-weight:800;
+  font-size:13px;
+  background:none;
+  border:0;
+  padding:0;
+  text-align:left;
+  cursor:pointer;
+}
+
+.read-more:hover { color:#9b6b11; }
+
+.empty {
+  grid-column:1/-1;
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+  border:1px dashed #cfc8b7;
+  border-radius:12px;
+}
+
+.quote {
+  margin:58px 0 0;
+  padding:32px;
+  border-radius:18px;
+  background:#e9eee5;
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+
+.quote-mark { font-size:45px; line-height:1; color:#a27b2b; }
+.quote p { margin:0; font-size:18px; font-weight:650; color:#254237; }
+.quote span { display:block; color:var(--muted); font-size:12px; margin-top:10px; }
+
+.about {
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:35px;
+  align-items:center;
+  padding-top:68px;
+}
+
+.about-mark {
+  min-height:220px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:var(--green);
+  color:var(--gold);
+  font-size:90px;
+}
+
+.about p { color:var(--muted); }
+
+footer { background:#052b25; color:#dce8df; padding:28px 22px; }
+
+.footer-inner {
+  max-width:1120px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  font-size:12px;
+}
+
+.footer-inner strong { color:var(--gold); }
+
+.modal-backdrop {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(3,24,20,.7);
+  z-index:20;
+  padding:18px;
+  overflow-y:auto;
+}
+
+.modal-backdrop.show { display:grid; place-items:center; }
+
+.modal {
+  width:min(650px,100%);
+  background:var(--white);
+  border-radius:18px;
+  padding:28px;
+  position:relative;
+  margin:auto;
+}
+
+.modal-close {
+  position:absolute;
+  top:12px;
+  right:14px;
+  border:0;
+  background:#edf0e9;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.modal h2 { padding-right:38px; }
+.modal p { color:#4f6057; white-space:pre-line; }
+
+@media(max-width:760px) {
+  .nav { padding:13px 16px; }
+  .nav-links { gap:12px; font-size:12px; }
+  .nav-links a:nth-child(2) { display:none; }
+  .hero-inner { grid-template-columns:1fr; padding:54px 20px 42px; gap:10px; }
+  .hero-art { min-height:220px; }
+  .seal { width:210px; }
+  .seal-symbol { font-size:58px; }
+  .stats { padding:18px 12px; gap:6px; }
+  .stat { flex-direction:column; gap:3px; text-align:center; }
+  .stat-icon { font-size:21px; }
+  .stat strong { font-size:12px; }
+  .stat span { font-size:10px; }
+  main { padding:48px 16px 55px; }
+  .section-head { display:block; }
+  .searchbox { max-width:none; }
+  .cards { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .card-art { height:135px; }
+  .card-content { padding:14px; }
+  .card h3 { font-size:16px; }
+  .card p { font-size:12px; }
+  .quote { padding:23px 18px; margin-top:42px; }
+  .quote p { font-size:16px; }
+  .about { grid-template-columns:1fr; gap:20px; padding-top:48px; }
+  .about-mark { min-height:150px; font-size:65px; }
+}
+
+@media(max-width:380px) {
+  .cards { grid-template-columns:1fr; }
+  .nav-links a { display:none; }
+}
 </style>
 </head>
+
 <body>
-<header id="beranda">
-<nav>
-<div class="logo">✦ ENSIKLOPEDIA <span>ACEH</span></div>
-<div><a href="#artikel">Artikel</a><a href="#tentang">Tentang</a></div>
+<div class="topline"></div>
+
+<header>
+<nav class="nav" aria-label="Navigasi utama">
+  <a class="brand" href="#beranda">
+    <div class="brand-mark">✦</div>
+    <div>
+      <div class="brand-name">Ensiklopedia Digital Aceh</div>
+      <div class="brand-sub">Warisan • Pengetahuan • Identitas</div>
+    </div>
+  </a>
+
+  <div class="nav-links">
+    <a href="#artikel">Jelajahi</a>
+    <a href="#tentang">Tentang</a>
+    <a href="#artikel">Artikel</a>
+  </div>
 </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="beranda">
 <div class="hero-inner">
-<div>
-<div class="kicker">Mengenal Serambi Mekkah</div>
-<h1>Menjelajahi <span>Kekayaan Aceh</span></h1>
-<p>Temukan sejarah, budaya, adat istiadat, tokoh inspiratif, kuliner khas, dan keindahan alam Aceh dalam satu ensiklopedia digital.</p>
-<a class="btn" href="#artikel">Jelajahi Ensiklopedia ↗</a>
-</div>
-<div class="seal" aria-hidden="true">۞</div>
+  <div>
+    <div class="eyebrow">Mengenal Serambi Mekkah</div>
+    <h1>Menjelajahi <span>Kekayaan Aceh</span>, satu cerita pada satu waktu.</h1>
+    <p>Ruang digital untuk mengenal sejarah, budaya, adat istiadat, kuliner, tokoh, dan keindahan alam Aceh. Temukan cerita yang menjaga warisan tetap hidup lintas generasi.</p>
+
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="#artikel">Jelajahi ensiklopedia ↗</a>
+      <a class="btn btn-outline" href="#tentang">Kenali proyek ini</a>
+    </div>
+  </div>
+
+  <div class="hero-art" aria-hidden="true">
+    <div class="seal">
+      <div class="seal-inner">
+        <div class="seal-symbol">۞</div>
+        <div class="seal-title">TANAH RENCONG</div>
+        <div class="seal-small">Warisan yang terus bercerita</div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
+<div class="stats-wrap">
 <div class="stats">
-<div>📜 <strong>Sejarah Aceh</strong></div>
-<div>🎭 <strong>Budaya & Tradisi</strong></div>
-<div>🌿 <strong>Alam & Kuliner</strong></div>
+  <div class="stat">
+    <div class="stat-icon">📜</div>
+    <div><strong>Sejarah & Tokoh</strong><span>Jejak perjalanan Aceh</span></div>
+  </div>
+  <div class="stat">
+    <div class="stat-icon">🎭</div>
+    <div><strong>Budaya & Tradisi</strong><span>Identitas yang dijaga</span></div>
+  </div>
+  <div class="stat">
+    <div class="stat-icon">🌿</div>
+    <div><strong>Alam & Kuliner</strong><span>Keindahan dan cita rasa</span></div>
+  </div>
+</div>
 </div>
 
 <main>
 <section id="artikel">
-<div class="kicker" style="color:#0d5a49">PERPUSTAKAAN DIGITAL</div>
-<h2>Jelajahi Pengetahuan Aceh</h2>
-<p class="desc">Cari artikel atau pilih kategori yang ingin kamu pelajari.</p>
-<div class="search">
-<input id="q" type="search" placeholder="Cari sejarah, budaya, kuliner..." aria-label="Cari artikel">
-<button id="cari">Cari</button>
-</div>
-<div class="filters" id="filters">
-<button class="active" data-cat="Semua">Semua</button>
-<button data-cat="Sejarah">Sejarah</button>
-<button data-cat="Budaya">Budaya</button>
-<button data-cat="Tokoh">Tokoh</button>
-<button data-cat="Kuliner">Kuliner</button>
-<button data-cat="Wisata">Wisata</button>
-</div>
-<div class="cards" id="cards"></div>
+  <div class="section-head">
+    <div>
+      <div class="section-kicker">Perpustakaan digital</div>
+      <h2>Jelajahi pengetahuan Aceh</h2>
+      <p class="section-desc">Pilih kategori atau gunakan pencarian untuk menemukan topik yang ingin kamu kenali.</p>
+    </div>
+  </div>
+
+  <div class="searchbox">
+    <input id="searchInput" type="search" placeholder="Cari sejarah, budaya, kuliner..." aria-label="Cari artikel">
+    <button id="searchButton" type="button">Cari</button>
+  </div>
+
+  <div class="filters" id="filters" aria-label="Filter kategori">
+    <button class="filter active" data-category="Semua">Semua topik</button>
+    <button class="filter" data-category="Sejarah">Sejarah</button>
+    <button class="filter" data-category="Budaya">Budaya</button>
+    <button class="filter" data-category="Tokoh">Tokoh</button>
+    <button class="filter" data-category="Kuliner">Kuliner</button>
+    <button class="filter" data-category="Wisata">Wisata</button>
+  </div>
+
+  <div class="cards" id="articleGrid"></div>
 </section>
 
-<div class="quote">“Warisan bukan hanya sesuatu yang kita terima dari masa lalu, tetapi juga sesuatu yang kita jaga untuk generasi berikutnya.”</div>
+<aside class="quote">
+  <div class="quote-mark">“</div>
+  <div>
+    <p>Warisan bukan hanya sesuatu yang kita terima dari masa lalu, tetapi juga sesuatu yang kita jaga untuk generasi berikutnya.</p>
+    <span>Semangat Ensiklopedia Digital Aceh</span>
+  </div>
+</aside>
 
 <section class="about" id="tentang">
-<div class="about-icon">✦</div>
-<div>
-<div class="kicker" style="color:#0d5a49">TENTANG PROYEK</div>
-<h2>Pengetahuan Aceh dalam Genggaman</h2>
-<p>Ensiklopedia Digital Aceh merupakan ruang belajar untuk mengenal sejarah dan kekayaan budaya Aceh. Konten dapat terus dikembangkan dengan sumber yang tepercaya, informasi akurat, dan kontribusi masyarakat.</p>
-<a class="btn" href="#artikel">Mulai Membaca ↓</a>
-</div>
+  <div class="about-mark" aria-hidden="true">✦</div>
+  <div>
+    <div class="section-kicker">Tentang proyek</div>
+    <h2>Pengetahuan Aceh dalam genggaman</h2>
+    <p>Ensiklopedia Digital Aceh adalah proyek informasi yang bertujuan memperkenalkan kekayaan Aceh melalui bacaan yang mudah dijelajahi. Mulai dari sejarah Kesultanan Aceh, tradisi masyarakat, tokoh inspiratif, hingga kuliner dan destinasi alam.</p>
+    <p>Konten di halaman ini merupakan pengantar. Artikel dapat terus dikembangkan dengan sumber tepercaya, keterangan yang akurat, serta kontribusi pembaca.</p>
+    <a class="btn btn-gold" href="#artikel">Mulai membaca ↓</a>
+  </div>
 </section>
 </main>
 
-<footer><strong>Ensiklopedia Digital Aceh</strong><br>Merawat cerita, mengenal identitas.<br>© <span id="year"></span> Ensiklopedia Digital Aceh</footer>
-
-<div class="modal-bg" id="modal" role="dialog" aria-modal="true">
-<div class="modal">
-<button class="close" id="close" aria-label="Tutup">×</button>
-<div class="kicker" id="mc" style="color:#0d5a49"></div>
-<h2 id="mt"></h2>
-<p id="mb"></p>
-<button class="btn" id="done">Selesai Membaca</button>
+<footer>
+<div class="footer-inner">
+  <div><strong>Ensiklopedia Digital Aceh</strong><br>Merawat cerita, mengenal identitas.</div>
+  <div>© <span id="year"></span> Ensiklopedia Digital Aceh · Dibuat untuk pembelajaran</div>
 </div>
+</footer>
+
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Tutup artikel">×</button>
+    <div class="section-kicker" id="modalCategory"></div>
+    <h2 id="modalTitle"></h2>
+    <p id="modalBody"></p>
+    <button class="btn btn-gold" id="modalDone" type="button">Selesai membaca</button>
+  </div>
 </div>
 
 <script>
-const data=[
-{t:"Kesultanan Aceh Darussalam",c:"Sejarah",i:"🏛️",s:"Kerajaan penting di Nusantara yang berkembang sebagai pusat perdagangan dan keilmuan.",b:"Kesultanan Aceh Darussalam berkembang di ujung utara Sumatra dan memiliki peran penting dalam jaringan perdagangan Selat Malaka. Pada masa kejayaannya, Aceh menjalin hubungan dengan berbagai wilayah dan menjadi pusat pembelajaran Islam di kawasan. Untuk artikel lengkap, tambahkan referensi buku sejarah, arsip, dan penelitian akademik."},
-{t:"Tari Saman",c:"Budaya",i:"🥁",s:"Pertunjukan masyarakat Gayo dengan gerak kompak, tepukan, dan syair.",b:"Tari Saman berasal dari masyarakat Gayo di Aceh. Pertunjukan ini menonjolkan kekompakan, perubahan tempo, tepukan, serta syair yang dinyanyikan bersama. Saman mencerminkan kerja sama dan nilai kebersamaan serta telah diakui UNESCO sebagai Warisan Budaya Takbenda."},
-{t:"Cut Nyak Dhien",c:"Tokoh",i:"🕊️",s:"Pahlawan nasional perempuan yang gigih melawan kolonialisme.",b:"Cut Nyak Dhien dikenal sebagai tokoh perlawanan dari Aceh terhadap kolonialisme Belanda. Ia menjadi simbol keberanian dan keteguhan. Artikel lengkap sebaiknya mencantumkan kronologi kehidupan serta referensi dari sumber sejarah tepercaya."},
-{t:"Mie Aceh",c:"Kuliner",i:"🍜",s:"Mi berbumbu rempah dengan pilihan goreng, tumis, atau kuah.",b:"Mie Aceh dikenal dengan mi tebal dan bumbu rempah yang kuat. Hidangan ini biasa disajikan dalam variasi goreng, tumis, atau kuah, dengan pilihan daging maupun makanan laut. Resep dapat berbeda antardaerah."},
-{t:"Masjid Raya Baiturrahman",c:"Wisata",i:"🕌",s:"Landmark Banda Aceh yang memiliki nilai sejarah dan arsitektur.",b:"Masjid Raya Baiturrahman merupakan salah satu landmark paling dikenal di Banda Aceh. Masjid ini menjadi tempat ibadah sekaligus tujuan kunjungan. Pengunjung perlu menghormati kegiatan ibadah dan berpakaian sopan."},
-{t:"Kopi Gayo",c:"Kuliner",i:"☕",s:"Kopi dataran tinggi Gayo yang terkenal dan penting bagi ekonomi lokal.",b:"Dataran tinggi Gayo di Aceh dikenal sebagai salah satu kawasan penghasil kopi. Kopi menjadi bagian penting dari ekonomi masyarakat. Kisah kopi Gayo mencakup budidaya, pengolahan pascapanen, dan peran petani lokal."},
-{t:"Rumoh Aceh",c:"Budaya",i:"🏡",s:"Rumah tradisional yang mencerminkan arsitektur dan kehidupan masyarakat.",b:"Rumoh Aceh merupakan rumah tradisional yang umumnya berbentuk rumah panggung. Bentuk dan susunannya menunjukkan pengetahuan masyarakat tentang iklim, bahan bangunan, dan kehidupan keluarga. Detail arsitektur berbeda menurut daerah."},
-{t:"Pulau Weh dan Sabang",c:"Wisata",i:"🌊",s:"Kawasan pulau yang dikenal dengan pemandangan laut dan lokasi penyelaman.",b:"Pulau Weh berada di wilayah Kota Sabang dan dikenal dengan pemandangan laut serta lokasi penyelaman. Pengunjung sebaiknya menjaga kebersihan, tidak merusak terumbu karang, dan memperhatikan keselamatan laut."},
-{t:"Rencong",c:"Budaya",i:"⚔️",s:"Senjata tradisional yang menjadi simbol budaya Aceh.",b:"Rencong adalah senjata tradisional yang lekat dengan identitas budaya Aceh. Kini rencong juga dikenal sebagai benda budaya dan kerajinan. Penjelasan sejarah sebaiknya dilengkapi kajian budaya atau sumber museum."},
-{t:"Tsunami Aceh 2004",c:"Sejarah",i:"🕯️",s:"Mengenang bencana besar dan pentingnya kesiapsiagaan.",b:"Pada 26 Desember 2004, gempa bumi besar di Samudra Hindia memicu tsunami yang berdampak sangat parah pada Aceh. Peristiwa ini menimbulkan kehilangan besar dan menjadi pengingat pentingnya pendidikan kebencanaan, sistem peringatan dini, dan solidaritas."},
-{t:"Kuah Pliek U",c:"Kuliner",i:"🥘",s:"Masakan khas Aceh berbahan sayuran dan olahan kelapa.",b:"Kuah pliek u merupakan masakan khas Aceh yang menggunakan pliek u, bahan olahan kelapa yang memberi rasa dan aroma khas. Masakan ini berisi beragam sayuran. Bahan dan cara memasak dapat bervariasi menurut keluarga dan daerah."},
-{t:"Pinto Khop",c:"Sejarah",i:"🏰",s:"Peninggalan bersejarah yang dikaitkan dengan kawasan istana Aceh.",b:"Pinto Khop sering dikaitkan dengan kawasan taman dan kompleks istana Kesultanan Aceh. Situs bersejarah membantu masyarakat memahami tata ruang dan kehidupan masa lalu. Fungsi dan penanggalannya perlu diperiksa melalui sumber sejarah tepercaya."}
+const articles = [
+{
+title:"Kesultanan Aceh Darussalam",
+category:"Sejarah",
+image:"https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=900&q=85",
+summary:"Mengenal salah satu kerajaan penting di Nusantara yang berkembang sebagai pusat perdagangan dan keilmuan.",
+body:"Kesultanan Aceh Darussalam berkembang di ujung utara Sumatra dan memiliki peran penting dalam jaringan perdagangan Selat Malaka. Pada masa kejayaannya, Aceh menjalin hubungan dengan berbagai wilayah dan menjadi salah satu pusat pembelajaran Islam di kawasan. Untuk tulisan sejarah yang lebih mendalam, tambahkan rujukan buku sejarah, arsip, dan penelitian akademik agar tanggal serta peristiwa dapat diverifikasi."
+},
+{
+title:"Tari Saman",
+category:"Budaya",
+image:"https://images.unsplash.com/photo-1504609813442-a8924e83f76e?auto=format&fit=crop&w=900&q=85",
+summary:"Tradisi pertunjukan dari masyarakat Gayo yang dikenal dengan gerak kompak dan irama tepukan.",
+body:"Tari Saman berasal dari masyarakat Gayo di Aceh. Pertunjukan ini menonjolkan kekompakan, perubahan tempo, tepukan, serta syair yang dinyanyikan bersama. Saman bukan sekadar hiburan, tetapi juga mencerminkan kerja sama dan nilai kebersamaan. Tari Saman telah diakui UNESCO sebagai Warisan Budaya Takbenda yang membutuhkan perlindungan."
+},
+{
+title:"Cut Nyak Dhien",
+category:"Tokoh",
+image:"https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=900&q=85",
+summary:"Kisah perjuangan pahlawan nasional perempuan dari Aceh dalam perlawanan terhadap kolonialisme.",
+body:"Cut Nyak Dhien dikenal sebagai salah satu tokoh perlawanan dari Aceh terhadap kolonialisme Belanda. Ia melanjutkan perjuangan setelah kehilangan orang-orang terdekatnya dan menjadi simbol keberanian serta keteguhan. Untuk versi artikel lengkap, lengkapi dengan kronologi kehidupan, lokasi bersejarah, dan referensi dari sumber sejarah tepercaya."
+},
+{
+title:"Mie Aceh",
+category:"Kuliner",
+image:"https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=85",
+summary:"Hidangan mi berbumbu kaya rempah yang populer dengan pilihan daging, makanan laut, goreng, atau kuah.",
+body:"Mie Aceh dikenal dengan mi tebal dan bumbu rempah yang kuat. Hidangan ini biasa disajikan dalam variasi goreng, tumis, atau kuah, dengan pilihan bahan seperti daging sapi, kambing, atau makanan laut. Resep dan tingkat kepedasan dapat berbeda antara satu tempat dan tempat lainnya."
+},
+{
+title:"Masjid Raya Baiturrahman",
+category:"Wisata",
+image:"https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=900&q=85",
+summary:"Landmark Banda Aceh yang memiliki nilai sejarah, arsitektur, dan kehidupan keagamaan.",
+body:"Masjid Raya Baiturrahman merupakan salah satu landmark paling dikenal di Banda Aceh. Masjid ini menjadi tempat ibadah sekaligus tujuan kunjungan yang penting bagi banyak orang. Saat berkunjung, hormati kegiatan ibadah, berpakaian sopan, dan periksa aturan kunjungan terbaru."
+},
+{
+title:"Kopi Gayo",
+category:"Kuliner",
+image:"https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=900&q=85",
+summary:"Kopi dari dataran tinggi Gayo yang dikenal luas dan menjadi bagian dari kehidupan ekonomi setempat.",
+body:"Dataran tinggi Gayo di wilayah Aceh Tengah dan sekitarnya dikenal sebagai salah satu kawasan penghasil kopi. Kopi menjadi bagian penting dari ekonomi masyarakat dan budaya berkumpul. Cerita tentang kopi Gayo juga dapat mencakup proses budidaya, pengolahan pascapanen, serta peran petani dan koperasi lokal."
+},
+{
+title:"Rumoh Aceh",
+category:"Budaya",
+image:"https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=85",
+summary:"Rumah tradisional yang mencerminkan pengetahuan arsitektur, lingkungan, dan kehidupan keluarga Aceh.",
+body:"Rumoh Aceh merupakan rumah tradisional yang umumnya berbentuk rumah panggung. Bentuk dan susunannya menunjukkan pengetahuan masyarakat tentang iklim, bahan bangunan, serta kebutuhan kehidupan keluarga. Detail arsitektur dapat berbeda menurut daerah dan tradisi setempat."
+},
+{
+title:"Pulau Weh dan Sabang",
+category:"Wisata",
+image:"https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
+summary:"Kawasan pulau di ujung barat Indonesia yang terkenal dengan laut, pantai, dan kehidupan bawah air.",
+body:"Pulau Weh berada di wilayah Kota Sabang dan dikenal dengan pemandangan laut serta lokasi penyelaman. Pengunjung sebaiknya menjaga kebersihan, tidak merusak terumbu karang, mengikuti arahan pemandu, dan memperhatikan kondisi cuaca maupun keselamatan laut."
+},
+{
+title:"Rencong",
+category:"Budaya",
+image:"https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=85",
+summary:"Senjata tradisional yang menjadi salah satu simbol budaya dan identitas masyarakat Aceh.",
+body:"Rencong adalah senjata tradisional yang lekat dengan identitas budaya Aceh. Saat ini rencong juga dikenal sebagai benda budaya dan kerajinan. Pembahasan tentang bentuk, penggunaan historis, dan maknanya sebaiknya merujuk pada kajian budaya serta koleksi museum yang dapat diverifikasi."
+},
+{
+title:"Pinto Khop dan Taman Sari",
+category:"Sejarah",
+image:"https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=85",
+summary:"Jejak peninggalan sejarah yang berkaitan dengan kawasan istana Kesultanan Aceh di Banda Aceh.",
+body:"Pinto Khop sering dikaitkan dengan kawasan taman dan kompleks istana Kesultanan Aceh. Situs-situs bersejarah seperti ini membantu masyarakat memahami tata ruang dan kehidupan masa lalu. Informasi tentang fungsi dan penanggalan sebaiknya diperiksa melalui sumber sejarah atau pengelola situs setempat."
+},
+{
+title:"Tsunami Aceh 2004",
+category:"Sejarah",
+image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85",
+summary:"Mengenang bencana besar, ketangguhan masyarakat, dan pentingnya kesiapsiagaan bencana.",
+body:"Pada 26 Desember 2004, gempa bumi besar di Samudra Hindia memicu tsunami yang berdampak sangat parah pada Aceh. Peristiwa ini menimbulkan kehilangan besar dan mengubah kehidupan banyak keluarga. Peringatan tsunami juga menjadi pengingat tentang pendidikan kebencanaan, sistem peringatan dini, dan solidaritas kemanusiaan."
+},
+{
+title:"Kuah Pliek U",
+category:"Kuliner",
+image:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
+summary:"Masakan khas Aceh berbahan sayuran dengan pliek u yang memberi cita rasa khas.",
+body:"Kuah pliek u merupakan salah satu masakan khas Aceh yang menggunakan pliek u, bahan olahan kelapa yang memberi rasa dan aroma tersendiri. Masakan ini dapat berisi beragam sayuran dan menunjukkan kekayaan pengetahuan kuliner rumahan di Aceh. Bahan dan cara memasaknya dapat bervariasi menurut keluarga dan daerah."
+}
 ];
-let cat="Semua";
-const cards=document.getElementById("cards"),q=document.getElementById("q");
-function render(){
-const term=q.value.trim().toLocaleLowerCase("id");
-const list=data.filter(a=>(cat==="Semua"||a.c===cat)&&(a.t+" "+a.c+" "+a.s).toLocaleLowerCase("id").includes(term));
-cards.replaceChildren();
-if(!list.length){const e=document.createElement("div");e.className="empty";e.textContent="Artikel tidak ditemukan. Coba kata kunci lain.";cards.append(e);return;}
-list.forEach(a=>{
-const card=document.createElement("article");card.className="card";
-const art=document.createElement("div");art.className="art";art.textContent=a.i;
-const content=document.createElement("div");content.className="content";
-const tag=document.createElement("span");tag.className="tag";tag.textContent=a.c;
-const h=document.createElement("h3");h.textContent=a.t;
-const p=document.createElement("p");p.textContent=a.s;
-const b=document.createElement("button");b.className="read";b.textContent="Baca selengkapnya →";
-b.onclick=()=>openArticle(a);
-content.append(tag,h,p,b);card.append(art,content);cards.append(card);
-});
+
+let selectedCategory = "Semua";
+
+const grid = document.getElementById("articleGrid");
+const input = document.getElementById("searchInput");
+
+function renderArticles() {
+  const query = input.value.trim().toLocaleLowerCase("id");
+
+  const filtered = articles.filter(a =>
+    (selectedCategory === "Semua" || a.category === selectedCategory) &&
+    (a.title + " " + a.category + " " + a.summary)
+      .toLocaleLowerCase("id").includes(query)
+  );
+
+  grid.innerHTML = "";
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="empty">Belum ada artikel yang cocok. Coba kata kunci atau kategori lain, ya.</div>';
+    return;
+  }
+
+  filtered.forEach(a => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const art = document.createElement("div");
+    art.className = "card-art";
+
+    const photo = document.createElement("img");
+    photo.src = a.image;
+    photo.alt = a.title;
+    photo.loading = "lazy";
+
+    photo.onerror = () => {
+      art.innerHTML = '<div class="image-fallback">Foto belum tersedia</div>';
+    };
+
+    art.appendChild(photo);
+
+    const content = document.createElement("div");
+    content.className = "card-content";
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = a.category;
+
+    const title = document.createElement("h3");
+    title.textContent = a.title;
+
+    const summary = document.createElement("p");
+    summary.textContent = a.summary;
+
+    const btn = document.createElement("button");
+    btn.className = "read-more";
+    btn.type = "button";
+    btn.textContent = "Baca selengkapnya →";
+    btn.addEventListener("click", () => openArticle(a));
+
+    content.append(tag, title, summary, btn);
+    card.append(art, content);
+    grid.appendChild(card);
+  });
 }
-function openArticle(a){
-document.getElementById("mc").textContent=a.c;
-document.getElementById("mt").textContent=a.t;
-document.getElementById("mb").textContent=a.b;
-document.getElementById("modal").classList.add("show");
+
+function openArticle(a) {
+  document.getElementById("modalCategory").textContent = a.category;
+  document.getElementById("modalTitle").textContent = a.title;
+  document.getElementById("modalBody").textContent = a.body;
+  document.getElementById("modalBackdrop").classList.add("show");
+  document.getElementById("modalClose").focus();
 }
-function closeArticle(){document.getElementById("modal").classList.remove("show");}
-document.getElementById("filters").addEventListener("click",e=>{
-const b=e.target.closest("button[data-cat]");if(!b)return;
-cat=b.dataset.cat;
-document.querySelectorAll(".filters button").forEach(x=>x.classList.toggle("active",x===b));
-render();
+
+function closeArticle() {
+  document.getElementById("modalBackdrop").classList.remove("show");
+}
+
+document.getElementById("filters").addEventListener("click", event => {
+  const button = event.target.closest("button[data-category]");
+  if (!button) return;
+
+  selectedCategory = button.dataset.category;
+
+  document.querySelectorAll(".filter").forEach(b => {
+    b.classList.toggle("active", b === button);
+  });
+
+  renderArticles();
 });
-document.getElementById("cari").onclick=render;
-q.addEventListener("input",render);
-document.getElementById("close").onclick=closeArticle;
-document.getElementById("done").onclick=closeArticle;
-document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeArticle();});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeArticle();});
-document.getElementById("year").textContent=new Date().getFullYear();
-render();
+
+document.getElementById("searchButton").addEventListener("click", renderArticles);
+input.addEventListener("input", renderArticles);
+
+document.getElementById("modalClose").addEventListener("click", closeArticle);
+document.getElementById("modalDone").addEventListener("click", closeArticle);
+
+document.getElementById("modalBackdrop").addEventListener("click", event => {
+  if (event.target.id === "modalBackdrop") closeArticle();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeArticle();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderArticles();
 </script>
 </body>
 </html>
