@@ -3,229 +3,198 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#123c32">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#073b32">
 <title>Ensiklopedia Digital Aceh</title>
 <style>
-:root {
-  --green:#174c3c;
-  --gold:#e6bd72;
-  --cream:#f7f5ee;
-  --ink:#24352e;
-}
+:root{--hijau:#073b32;--hijau2:#0d5a49;--emas:#e5b95c;--krem:#f7f4eb;--putih:#fffefa;--teks:#17251f;--abu:#65736b}
 *{box-sizing:border-box}
-body{
-  margin:0;background:var(--cream);color:var(--ink);
-  font-family:Arial,sans-serif;line-height:1.7
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--krem);color:var(--teks);line-height:1.7}
+a{text-decoration:none;color:inherit}
+header{background:var(--hijau);color:white;border-top:5px solid var(--emas)}
+nav{max-width:1100px;margin:auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:20px;font-weight:bold}
+.logo span{color:var(--emas)}
+nav a{margin-left:15px;font-size:14px}
+.hero{background:linear-gradient(135deg,#073b32,#0d5a49);color:white;padding:65px 22px}
+.hero-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.15;margin:12px 0}
+.hero h1 span{color:var(--emas)}
+.hero p{max-width:650px;color:#d8e6df;font-size:17px}
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--emas);font-weight:bold}
+.seal{font-size:100px;color:var(--emas);border:2px solid #b9994e;border-radius:50%;width:210px;height:210px;display:grid;place-items:center;flex-shrink:0}
+.btn{display:inline-block;background:var(--emas);color:#18251f;padding:12px 18px;border-radius:9px;font-weight:bold;margin-top:12px}
+.stats{background:var(--putih);display:flex;justify-content:center;gap:45px;padding:22px;flex-wrap:wrap;border-bottom:1px solid #e8e3d7}
+.stats strong{color:var(--hijau)}
+main{max-width:1100px;margin:auto;padding:55px 22px}
+h2{font-size:clamp(26px,4vw,35px);line-height:1.25;margin:8px 0}
+.desc{color:var(--abu);margin-top:8px}
+.search{display:flex;gap:8px;margin:24px 0 16px}
+.search input{flex:1;min-width:0;padding:13px;border:1px solid #d6d4c9;border-radius:9px;font-size:16px}
+.search button{background:var(--hijau);color:white;border:0;border-radius:9px;padding:0 18px;font-weight:bold}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}
+.filters button{border:1px solid #d7d4c8;background:transparent;border-radius:30px;padding:8px 14px;cursor:pointer}
+.filters button.active,.filters button:hover{background:var(--hijau);color:white}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--putih);border:1px solid #e8e3d7;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 28px #073b3215}
+.art{height:140px;display:grid;place-items:center;font-size:55px;background:linear-gradient(135deg,#d9e8dd,#f3e4ba)}
+.content{padding:18px;display:flex;flex-direction:column;flex:1}
+.tag{font-size:11px;color:var(--hijau2);font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.card h3{margin:8px 0;font-size:19px;line-height:1.35}
+.card p{color:var(--abu);font-size:14px;margin:0 0 15px}
+.read{border:0;background:none;color:var(--hijau2);font-weight:bold;text-align:left;padding:0;cursor:pointer;margin-top:auto;font-size:14px}
+.empty{grid-column:1/-1;text-align:center;padding:25px;color:var(--abu)}
+.quote{background:#e8eee5;padding:28px;border-radius:14px;margin-top:45px;color:#254237;font-size:18px;font-weight:bold}
+.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:30px;align-items:center;margin-top:60px}
+.about-icon{background:var(--hijau);color:var(--emas);border-radius:15px;min-height:190px;display:grid;place-items:center;font-size:80px}
+.about p{color:var(--abu)}
+footer{background:#052b25;color:#dce8df;padding:27px 22px;text-align:center;font-size:13px}
+footer strong{color:var(--emas)}
+.modal-bg{display:none;position:fixed;inset:0;background:#001c17c9;z-index:10;padding:18px;overflow:auto;align-items:center;justify-content:center}
+.modal-bg.show{display:flex}
+.modal{background:var(--putih);padding:28px;border-radius:15px;width:100%;max-width:650px;position:relative}
+.modal h2{padding-right:35px}
+.modal p{white-space:pre-line;color:#4d5e55}
+.close{position:absolute;right:12px;top:10px;border:0;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}
+@media(max-width:750px){
+ nav{padding:15px;flex-wrap:wrap}.logo{font-size:17px}nav a{margin-left:9px;font-size:12px}
+ .hero{padding:45px 18px}.hero-inner{display:block}.seal{width:125px;height:125px;font-size:62px;margin:30px auto 0}
+ .stats{gap:12px;font-size:12px}.stats div{text-align:center}
+ main{padding:42px 15px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+ .art{height:105px;font-size:43px}.content{padding:13px}.card h3{font-size:16px}.card p{font-size:12px}
+ .about{grid-template-columns:1fr}.about-icon{min-height:130px}
 }
-header{
-  background:var(--green);color:white;padding:24px 18px 30px;
-  border-radius:0 0 25px 25px
-}
-nav{font-size:12px;letter-spacing:2px;color:var(--gold)}
-h1{font-size:30px;line-height:1.2;margin:16px 0 10px}
-header p{color:#e0e9e1;margin:0}
-.container{max-width:760px;margin:auto;padding:18px}
-.cover{
-  margin-top:20px;border-radius:20px;padding:25px 20px;
-  background:linear-gradient(140deg,#225b45,#102f2b);
-  color:white;text-align:center
-}
-.cover .symbol{font-size:66px}
-.cover h2{color:var(--gold);margin:5px}
-.cover p{font-size:14px}
-.search{
-  width:100%;padding:14px;border:1px solid #d6d9ce;
-  border-radius:12px;font-size:16px;background:white;margin:20px 0
-}
-h2.section{font-size:21px}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{
-  border:1px solid #e2e3d9;background:white;border-radius:15px;
-  padding:15px;text-align:left;color:var(--ink);cursor:pointer;
-  min-width:0;transition:transform .15s
-}
-.card:active{transform:scale(.98)}
-.card .emoji{font-size:34px}
-.card h3{font-size:16px;margin:6px 0}
-.card p{font-size:12px;color:#65736a;margin:0}
-.tag{font-size:10px;color:#47735b;font-weight:bold}
-.detail{
-  background:white;padding:20px;border-radius:18px;
-  border:1px solid #e2e3d9;margin-top:18px
-}
-.detail .hero{font-size:65px;text-align:center;background:#eaf0e5;
-  padding:20px;border-radius:15px}
-.detail h2{line-height:1.3}
-.fact{background:#f4edda;border-left:4px solid var(--gold);
-  padding:13px;border-radius:8px;margin-top:15px}
-button.back{
-  padding:10px 15px;border:0;border-radius:9px;
-  background:var(--green);color:white;font-size:14px;cursor:pointer
-}
-.hidden{display:none}
-footer{text-align:center;padding:25px;color:#68776d;font-size:12px}
-small{color:#6b786f}
-@media(min-width:600px){
-  header{padding:35px max(25px,calc((100% - 720px)/2)) 40px}
-  h1{font-size:38px}
-  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
+@media(max-width:380px){.cards{grid-template-columns:1fr}.art{height:125px}}
 </style>
 </head>
 <body>
-<header>
-  <nav>ENSIKLOPEDIA DIGITAL NUSANTARA</nav>
-  <h1>Mengenal Indonesia,<br>Dimulai dari Aceh.</h1>
-  <p>Menjelajahi sejarah, budaya, kuliner, dan keindahan alam Indonesia.</p>
+<header id="beranda">
+<nav>
+<div class="logo">✦ ENSIKLOPEDIA <span>ACEH</span></div>
+<div><a href="#artikel">Artikel</a><a href="#tentang">Tentang</a></div>
+</nav>
 </header>
 
-<main class="container">
-  <section id="home">
-    <div class="cover">
-      <div class="symbol">🌿</div>
-      <h2>Provinsi Aceh</h2>
-      <p>Serambi Mekkah · Ujung barat Indonesia</p>
-      <p>Kenali kekayaan daerah Aceh melalui ensiklopedia digital ini.</p>
-    </div>
+<section class="hero">
+<div class="hero-inner">
+<div>
+<div class="kicker">Mengenal Serambi Mekkah</div>
+<h1>Menjelajahi <span>Kekayaan Aceh</span></h1>
+<p>Temukan sejarah, budaya, adat istiadat, tokoh inspiratif, kuliner khas, dan keindahan alam Aceh dalam satu ensiklopedia digital.</p>
+<a class="btn" href="#artikel">Jelajahi Ensiklopedia ↗</a>
+</div>
+<div class="seal" aria-hidden="true">۞</div>
+</div>
+</section>
 
-    <input id="search" class="search" type="search"
-      placeholder="🔎 Cari sejarah, makanan, budaya..."
-      aria-label="Cari topik">
+<div class="stats">
+<div>📜 <strong>Sejarah Aceh</strong></div>
+<div>🎭 <strong>Budaya & Tradisi</strong></div>
+<div>🌿 <strong>Alam & Kuliner</strong></div>
+</div>
 
-    <h2 class="section">Jelajahi Kekayaan Aceh</h2>
-    <div class="grid" id="cards"></div>
-    <p id="empty" class="hidden">Topik tidak ditemukan. Coba kata lain.</p>
-  </section>
+<main>
+<section id="artikel">
+<div class="kicker" style="color:#0d5a49">PERPUSTAKAAN DIGITAL</div>
+<h2>Jelajahi Pengetahuan Aceh</h2>
+<p class="desc">Cari artikel atau pilih kategori yang ingin kamu pelajari.</p>
+<div class="search">
+<input id="q" type="search" placeholder="Cari sejarah, budaya, kuliner..." aria-label="Cari artikel">
+<button id="cari">Cari</button>
+</div>
+<div class="filters" id="filters">
+<button class="active" data-cat="Semua">Semua</button>
+<button data-cat="Sejarah">Sejarah</button>
+<button data-cat="Budaya">Budaya</button>
+<button data-cat="Tokoh">Tokoh</button>
+<button data-cat="Kuliner">Kuliner</button>
+<button data-cat="Wisata">Wisata</button>
+</div>
+<div class="cards" id="cards"></div>
+</section>
 
-  <section id="detail" class="detail hidden">
-    <button class="back" onclick="goHome()">← Kembali ke Aceh</button>
-    <div id="detailContent"></div>
-  </section>
+<div class="quote">“Warisan bukan hanya sesuatu yang kita terima dari masa lalu, tetapi juga sesuatu yang kita jaga untuk generasi berikutnya.”</div>
+
+<section class="about" id="tentang">
+<div class="about-icon">✦</div>
+<div>
+<div class="kicker" style="color:#0d5a49">TENTANG PROYEK</div>
+<h2>Pengetahuan Aceh dalam Genggaman</h2>
+<p>Ensiklopedia Digital Aceh merupakan ruang belajar untuk mengenal sejarah dan kekayaan budaya Aceh. Konten dapat terus dikembangkan dengan sumber yang tepercaya, informasi akurat, dan kontribusi masyarakat.</p>
+<a class="btn" href="#artikel">Mulai Membaca ↓</a>
+</div>
+</section>
 </main>
 
-<footer>
-  ENSIKLOPEDIA DIGITAL NUSANTARA<br>
-  Belajar · Mengenal · Melestarikan
-</footer>
+<footer><strong>Ensiklopedia Digital Aceh</strong><br>Merawat cerita, mengenal identitas.<br>© <span id="year"></span> Ensiklopedia Digital Aceh</footer>
+
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true">
+<div class="modal">
+<button class="close" id="close" aria-label="Tutup">×</button>
+<div class="kicker" id="mc" style="color:#0d5a49"></div>
+<h2 id="mt"></h2>
+<p id="mb"></p>
+<button class="btn" id="done">Selesai Membaca</button>
+</div>
+</div>
 
 <script>
-const topics = [
-{
- title:"Sejarah Aceh", emoji:"🏛️", tag:"SEJARAH",
- desc:"Kesultanan dan perjalanan masa lalu",
- intro:"Aceh memiliki sejarah panjang sebagai pusat perdagangan dan penyebaran Islam di Nusantara. Kesultanan Aceh Darussalam pernah menjadi kekuatan penting di kawasan Selat Malaka.",
- fact:"Sultan Iskandar Muda memimpin Aceh pada masa kejayaan awal abad ke-17.",
- more:"Sejarah Aceh juga mencakup perjuangan panjang masyarakatnya melawan kolonialisme. Peninggalan sejarah, makam, masjid, dan tradisi lisan menjadi bagian penting dari ingatan masyarakat."
-},
-{
- title:"Rumah Adat", emoji:"🏠", tag:"ARSITEKTUR",
- desc:"Mengenal Rumoh Aceh",
- intro:"Rumoh Aceh adalah rumah tradisional yang umumnya berbentuk panggung dan dibangun menggunakan kayu. Ruang-ruangnya memiliki fungsi tersendiri dalam kehidupan keluarga.",
- fact:"Bentuk panggung membantu sirkulasi udara dan menyesuaikan rumah dengan lingkungan tropis.",
- more:"Rumah tradisional juga mencerminkan keterampilan pertukangan dan nilai sosial masyarakat. Bentuk serta hiasan dapat berbeda menurut daerah dan pemiliknya."
-},
-{
- title:"Budaya dan Tari", emoji:"💃", tag:"KESENIAN",
- desc:"Saman, Seudati, dan tradisi",
- intro:"Aceh memiliki beragam kesenian tradisional. Tari Saman dikenal dengan gerakan tubuh dan tepukan yang kompak, sedangkan Tari Seudati memiliki gerak yang dinamis.",
- fact:"Tari Saman dari masyarakat Gayo tercatat dalam daftar Warisan Budaya Takbenda UNESCO pada 2011.",
- more:"Syair, musik, kerajinan, dan tradisi masyarakat turut memperkaya kebudayaan Aceh. Setiap komunitas memiliki ciri dan sejarahnya sendiri."
-},
-{
- title:"Makanan Khas", emoji:"🍜", tag:"KULINER",
- desc:"Mie Aceh dan masakan rempah",
- intro:"Kuliner Aceh terkenal dengan bumbu dan rempah yang kaya. Mie Aceh merupakan salah satu hidangan populernya, disajikan dengan kuah atau digoreng.",
- fact:"Kuliner khas lainnya meliputi kuah pliek u, ayam tangkap, dan berbagai kue tradisional.",
- more:"Bahan dan resep bisa berbeda menurut keluarga maupun daerah. Kuliner merupakan bagian dari identitas dan kebiasaan berkumpul masyarakat."
-},
-{
- title:"Alam dan Wisata", emoji:"🌊", tag:"KEINDAHAN ALAM",
- desc:"Sabang, pantai, dan pegunungan",
- intro:"Aceh memiliki bentang alam yang beragam, mulai dari pantai dan pulau hingga hutan tropis dan kawasan pegunungan.",
- fact:"Tugu Kilometer Nol Indonesia berada di Pulau Weh, wilayah Kota Sabang.",
- more:"Sabang dikenal dengan wisata bahari. Kawasan lain di Aceh juga memiliki hutan dan ekosistem yang penting bagi kehidupan satwa serta masyarakat."
-},
-{
- title:"Flora dan Fauna", emoji:"🐘", tag:"KEANEKARAGAMAN HAYATI",
- desc:"Hutan tropis dan satwa liar",
- intro:"Hutan Aceh merupakan bagian dari habitat beragam satwa Sumatra. Bentang alam Leuser menjadi salah satu kawasan penting bagi pelestarian alam.",
- fact:"Gajah Sumatra, harimau Sumatra, dan orangutan Sumatra merupakan satwa yang hidup di bagian-bagian Sumatra, termasuk habitat tertentu di Aceh.",
- more:"Pelestarian hutan membantu menjaga sumber air, mencegah kerusakan ekosistem, dan mempertahankan ruang hidup satwa liar."
-},
-{
- title:"Bahasa Daerah", emoji:"🗣️", tag:"BAHASA",
- desc:"Bahasa Aceh, Gayo, dan lainnya",
- intro:"Aceh memiliki keberagaman bahasa daerah. Bahasa Aceh dan bahasa Gayo merupakan contoh bahasa yang digunakan oleh komunitas masyarakat di provinsi ini.",
- fact:"Bahasa Indonesia menjadi bahasa nasional yang menghubungkan masyarakat dari berbagai kelompok bahasa.",
- more:"Bahasa daerah menyimpan kosakata, cerita rakyat, ungkapan, dan pengetahuan lokal yang penting untuk diwariskan kepada generasi berikutnya."
-},
-{
- title:"Pakaian Adat", emoji:"🧵", tag:"WARISAN TRADISI",
- desc:"Busana tradisional Aceh",
- intro:"Busana adat Aceh memiliki beragam bentuk dan hiasan. Pakaian yang dikenal sebagai Ulee Balang sering dikaitkan dengan busana adat untuk acara resmi dan upacara tertentu.",
- fact:"Warna, aksesori, dan bentuk busana dapat berbeda menurut jenis pakaian dan konteks pemakaiannya.",
- more:"Busana tradisional memperlihatkan keterampilan tekstil, penggunaan aksesori, serta nilai budaya yang diwariskan lintas generasi."
-},
-{
- title:"Kerajinan Tradisional", emoji:"🎨", tag:"KERAJINAN",
- desc:"Seni ukir, sulaman, dan tenun",
- intro:"Kerajinan Aceh meliputi beragam karya seperti sulaman, ukiran, dan produk tekstil tradisional. Motif dan tekniknya dapat berbeda di tiap daerah.",
- fact:"Kerajinan tradisional dapat menjadi sarana pelestarian keterampilan sekaligus sumber penghidupan perajin.",
- more:"Mengenal asal-usul motif dan pembuatnya membantu menghargai karya lokal serta menjaga agar keterampilan tersebut terus diwariskan."
-},
-{
- title:"Tradisi dan Upacara", emoji:"🤝", tag:"KEHIDUPAN MASYARAKAT",
- desc:"Adat dan kebersamaan warga",
- intro:"Kehidupan masyarakat Aceh dipengaruhi oleh adat, nilai keagamaan, dan kebiasaan setempat. Tradisi dapat terlihat dalam kegiatan keluarga, perayaan, dan aktivitas bersama.",
- fact:"Pelaksanaan tradisi bisa berbeda antara satu komunitas dengan komunitas lainnya.",
- more:"Mempelajari tradisi sebaiknya dilakukan dengan menghormati masyarakat pemiliknya dan memahami konteks setempat."
-}
+const data=[
+{t:"Kesultanan Aceh Darussalam",c:"Sejarah",i:"🏛️",s:"Kerajaan penting di Nusantara yang berkembang sebagai pusat perdagangan dan keilmuan.",b:"Kesultanan Aceh Darussalam berkembang di ujung utara Sumatra dan memiliki peran penting dalam jaringan perdagangan Selat Malaka. Pada masa kejayaannya, Aceh menjalin hubungan dengan berbagai wilayah dan menjadi pusat pembelajaran Islam di kawasan. Untuk artikel lengkap, tambahkan referensi buku sejarah, arsip, dan penelitian akademik."},
+{t:"Tari Saman",c:"Budaya",i:"🥁",s:"Pertunjukan masyarakat Gayo dengan gerak kompak, tepukan, dan syair.",b:"Tari Saman berasal dari masyarakat Gayo di Aceh. Pertunjukan ini menonjolkan kekompakan, perubahan tempo, tepukan, serta syair yang dinyanyikan bersama. Saman mencerminkan kerja sama dan nilai kebersamaan serta telah diakui UNESCO sebagai Warisan Budaya Takbenda."},
+{t:"Cut Nyak Dhien",c:"Tokoh",i:"🕊️",s:"Pahlawan nasional perempuan yang gigih melawan kolonialisme.",b:"Cut Nyak Dhien dikenal sebagai tokoh perlawanan dari Aceh terhadap kolonialisme Belanda. Ia menjadi simbol keberanian dan keteguhan. Artikel lengkap sebaiknya mencantumkan kronologi kehidupan serta referensi dari sumber sejarah tepercaya."},
+{t:"Mie Aceh",c:"Kuliner",i:"🍜",s:"Mi berbumbu rempah dengan pilihan goreng, tumis, atau kuah.",b:"Mie Aceh dikenal dengan mi tebal dan bumbu rempah yang kuat. Hidangan ini biasa disajikan dalam variasi goreng, tumis, atau kuah, dengan pilihan daging maupun makanan laut. Resep dapat berbeda antardaerah."},
+{t:"Masjid Raya Baiturrahman",c:"Wisata",i:"🕌",s:"Landmark Banda Aceh yang memiliki nilai sejarah dan arsitektur.",b:"Masjid Raya Baiturrahman merupakan salah satu landmark paling dikenal di Banda Aceh. Masjid ini menjadi tempat ibadah sekaligus tujuan kunjungan. Pengunjung perlu menghormati kegiatan ibadah dan berpakaian sopan."},
+{t:"Kopi Gayo",c:"Kuliner",i:"☕",s:"Kopi dataran tinggi Gayo yang terkenal dan penting bagi ekonomi lokal.",b:"Dataran tinggi Gayo di Aceh dikenal sebagai salah satu kawasan penghasil kopi. Kopi menjadi bagian penting dari ekonomi masyarakat. Kisah kopi Gayo mencakup budidaya, pengolahan pascapanen, dan peran petani lokal."},
+{t:"Rumoh Aceh",c:"Budaya",i:"🏡",s:"Rumah tradisional yang mencerminkan arsitektur dan kehidupan masyarakat.",b:"Rumoh Aceh merupakan rumah tradisional yang umumnya berbentuk rumah panggung. Bentuk dan susunannya menunjukkan pengetahuan masyarakat tentang iklim, bahan bangunan, dan kehidupan keluarga. Detail arsitektur berbeda menurut daerah."},
+{t:"Pulau Weh dan Sabang",c:"Wisata",i:"🌊",s:"Kawasan pulau yang dikenal dengan pemandangan laut dan lokasi penyelaman.",b:"Pulau Weh berada di wilayah Kota Sabang dan dikenal dengan pemandangan laut serta lokasi penyelaman. Pengunjung sebaiknya menjaga kebersihan, tidak merusak terumbu karang, dan memperhatikan keselamatan laut."},
+{t:"Rencong",c:"Budaya",i:"⚔️",s:"Senjata tradisional yang menjadi simbol budaya Aceh.",b:"Rencong adalah senjata tradisional yang lekat dengan identitas budaya Aceh. Kini rencong juga dikenal sebagai benda budaya dan kerajinan. Penjelasan sejarah sebaiknya dilengkapi kajian budaya atau sumber museum."},
+{t:"Tsunami Aceh 2004",c:"Sejarah",i:"🕯️",s:"Mengenang bencana besar dan pentingnya kesiapsiagaan.",b:"Pada 26 Desember 2004, gempa bumi besar di Samudra Hindia memicu tsunami yang berdampak sangat parah pada Aceh. Peristiwa ini menimbulkan kehilangan besar dan menjadi pengingat pentingnya pendidikan kebencanaan, sistem peringatan dini, dan solidaritas."},
+{t:"Kuah Pliek U",c:"Kuliner",i:"🥘",s:"Masakan khas Aceh berbahan sayuran dan olahan kelapa.",b:"Kuah pliek u merupakan masakan khas Aceh yang menggunakan pliek u, bahan olahan kelapa yang memberi rasa dan aroma khas. Masakan ini berisi beragam sayuran. Bahan dan cara memasak dapat bervariasi menurut keluarga dan daerah."},
+{t:"Pinto Khop",c:"Sejarah",i:"🏰",s:"Peninggalan bersejarah yang dikaitkan dengan kawasan istana Aceh.",b:"Pinto Khop sering dikaitkan dengan kawasan taman dan kompleks istana Kesultanan Aceh. Situs bersejarah membantu masyarakat memahami tata ruang dan kehidupan masa lalu. Fungsi dan penanggalannya perlu diperiksa melalui sumber sejarah tepercaya."}
 ];
-
-const cards = document.getElementById("cards");
-const search = document.getElementById("search");
-
-function render(query=""){
-  cards.innerHTML="";
-  const filtered=topics.filter(t=>
-    (t.title+" "+t.desc+" "+t.tag+" "+t.intro)
-      .toLowerCase().includes(query.toLowerCase())
-  );
-  document.getElementById("empty").classList.toggle("hidden",filtered.length>0);
-  filtered.forEach(t=>{
-    const b=document.createElement("button");
-    b.className="card";
-    b.innerHTML=`<div class="emoji">${t.emoji}</div>
-      <div class="tag">${t.tag}</div>
-      <h3>${t.title}</h3><p>${t.desc}</p>`;
-    b.onclick=()=>openTopic(t.title);
-    cards.appendChild(b);
-  });
+let cat="Semua";
+const cards=document.getElementById("cards"),q=document.getElementById("q");
+function render(){
+const term=q.value.trim().toLocaleLowerCase("id");
+const list=data.filter(a=>(cat==="Semua"||a.c===cat)&&(a.t+" "+a.c+" "+a.s).toLocaleLowerCase("id").includes(term));
+cards.replaceChildren();
+if(!list.length){const e=document.createElement("div");e.className="empty";e.textContent="Artikel tidak ditemukan. Coba kata kunci lain.";cards.append(e);return;}
+list.forEach(a=>{
+const card=document.createElement("article");card.className="card";
+const art=document.createElement("div");art.className="art";art.textContent=a.i;
+const content=document.createElement("div");content.className="content";
+const tag=document.createElement("span");tag.className="tag";tag.textContent=a.c;
+const h=document.createElement("h3");h.textContent=a.t;
+const p=document.createElement("p");p.textContent=a.s;
+const b=document.createElement("button");b.className="read";b.textContent="Baca selengkapnya →";
+b.onclick=()=>openArticle(a);
+content.append(tag,h,p,b);card.append(art,content);cards.append(card);
+});
 }
-function openTopic(title){
-  const t=topics.find(x=>x.title===title);
-  if(!t)return;
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("detail").classList.remove("hidden");
-  document.getElementById("detailContent").innerHTML=`
-    <div class="hero">${t.emoji}</div>
-    <p class="tag">${t.tag}</p>
-    <h2>${t.title}</h2>
-    <p>${t.intro}</p>
-    <div class="fact"><strong>💡 Tahukah kamu?</strong><br>${t.fact}</div>
-    <h3>Penjelasan lebih lanjut</h3>
-    <p>${t.more}</p>
-    <small>Artikel pengantar. Periksa kembali sumber dan detail sejarah sebelum digunakan sebagai bahan referensi.</small>`;
-  window.scrollTo({top:0,behavior:"smooth"});
+function openArticle(a){
+document.getElementById("mc").textContent=a.c;
+document.getElementById("mt").textContent=a.t;
+document.getElementById("mb").textContent=a.b;
+document.getElementById("modal").classList.add("show");
 }
-function goHome(){
-  document.getElementById("detail").classList.add("hidden");
-  document.getElementById("home").classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-search.addEventListener("input",e=>render(e.target.value));
+function closeArticle(){document.getElementById("modal").classList.remove("show");}
+document.getElementById("filters").addEventListener("click",e=>{
+const b=e.target.closest("button[data-cat]");if(!b)return;
+cat=b.dataset.cat;
+document.querySelectorAll(".filters button").forEach(x=>x.classList.toggle("active",x===b));
+render();
+});
+document.getElementById("cari").onclick=render;
+q.addEventListener("input",render);
+document.getElementById("close").onclick=closeArticle;
+document.getElementById("done").onclick=closeArticle;
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeArticle();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeArticle();});
+document.getElementById("year").textContent=new Date().getFullYear();
 render();
 </script>
 </body>
-  </html>
+</html>
